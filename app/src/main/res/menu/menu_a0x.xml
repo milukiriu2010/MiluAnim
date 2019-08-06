@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+            android:id="@+id/a02"
+            android:title="a02_PorterDuff" />
+    <item
+            android:id="@+id/a01"
+            android:title="a01_PathEffect" />
+</menu>

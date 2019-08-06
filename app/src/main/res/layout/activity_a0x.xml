@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:keepScreenOn="true"
-        tools:context=".a0x.a01.A0XActivity">
+        tools:context=".a0x.A0XActivity">
 
     <FrameLayout
             android:id="@+id/frameLayout"
