@@ -37,6 +37,11 @@ class A01Fragment : Fragment()
         strokeWidth = 4f
     }
 
+    private val fillPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.BLACK
+        style = Paint.Style.FILL
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -188,6 +193,57 @@ class A01Fragment : Fragment()
         canvas.drawLine(marginW,n*marginH,sw-marginW,n*marginH,linePaint)
 
         // --------------------------------------------------------------------
+        // 円弧を120度ずつ描く(stroke,useCenter=true)
+        // --------------------------------------------------------------------
+        linePaint.pathEffect = null
+        n = 16f
+        canvas.save()
+        canvas.translate(0f,n*marginH)
+        (0..9).forEach { i ->
+            val ii = i.toFloat()
+            canvas.drawArc(0f,0f,marginW,marginH,ii*60f,120f,true,linePaint)
+            canvas.translate(marginW,0f)
+        }
+        canvas.restore()
+
+        // --------------------------------------------------------------------
+        // 円弧を120度ずつ描く(stroke,useCenter=false)
+        // --------------------------------------------------------------------
+        n = 17f
+        canvas.save()
+        canvas.translate(0f,n*marginH)
+        (0..9).forEach { i ->
+            val ii = i.toFloat()
+            canvas.drawArc(0f,0f,marginW,marginH,ii*60f,120f,false,linePaint)
+            canvas.translate(marginW,0f)
+        }
+        canvas.restore()
+
+        // --------------------------------------------------------------------
+        // 円弧を120度ずつ描く(fill,useCenter=true)
+        // --------------------------------------------------------------------
+        n = 18f
+        canvas.save()
+        canvas.translate(0f,n*marginH)
+        (0..9).forEach { i ->
+            val ii = i.toFloat()
+            canvas.drawArc(0f,0f,marginW,marginH,ii*60f,120f,true,fillPaint)
+            canvas.translate(marginW,0f)
+        }
+        canvas.restore()
+
+        // --------------------------------------------------------------------
+        // 円弧を120度ずつ描く(fill,useCenter=false)
+        // --------------------------------------------------------------------
+        n = 19f
+        canvas.save()
+        canvas.translate(0f,n*marginH)
+        (0..9).forEach { i ->
+            val ii = i.toFloat()
+            canvas.drawArc(0f,0f,marginW,marginH,ii*60f,120f,false,fillPaint)
+            canvas.translate(marginW,0f)
+        }
+        canvas.restore()
 
         surfaceViewCanvas.holder.unlockCanvasAndPost(canvas)
     }
