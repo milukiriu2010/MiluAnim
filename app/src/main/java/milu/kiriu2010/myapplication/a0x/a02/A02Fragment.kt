@@ -4,6 +4,7 @@ import android.graphics.*
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
+import android.text.TextPaint
 import android.view.*
 
 import milu.kiriu2010.myapplication.R
@@ -56,7 +57,26 @@ class A02Fragment : Fragment()
     private val dummyPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.BLACK
         style = Paint.Style.FILL
+        textSize = 50f
+        val typeFaceCur = typeface
+        val typeFaceBold = Typeface.create(typeFaceCur,Typeface.BOLD)
+        typeface = typeFaceBold
     }
+
+    private val textPaint = TextPaint().apply {
+        color = Color.BLACK
+        textAlign = Paint.Align.LEFT
+        textSize = 50f
+        val typeFaceCur = typeface
+        val typeFaceBold = Typeface.create(typeFaceCur,Typeface.BOLD)
+        typeface = typeFaceBold
+    }
+
+    // テキストの位置を補正
+    // https://blog.danlew.net/2013/10/03/centering_single_line_text_in_a_canvas/
+    private val textHeight = textPaint.descent() - textPaint.ascent()
+    //private val textOffset = textHeight/2 - textPaint.descent()
+    private val textOffset = textHeight
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,66 +111,159 @@ class A02Fragment : Fragment()
         if (canvas == null) return
 
         // ---------------------------------------
-        // 十字架のビットマップを生成
+        // 十字架のビットマップを生成(プログラム)
         // ---------------------------------------
-        val bmpCross = Bitmap.createBitmap(100,100, Bitmap.Config.ARGB_8888)
-        val cvsCross = Canvas(bmpCross)
+        val bmpCross1 = Bitmap.createBitmap(100,100, Bitmap.Config.ARGB_8888)
+        val cvsCross = Canvas(bmpCross1)
         // 透明色でクリア
         cvsCross.drawColor(Color.TRANSPARENT,PorterDuff.Mode.CLEAR)
         cvsCross.drawRect(RectF(40f, 0f, 60f,100f),crossPaint)
         cvsCross.drawRect(RectF( 0f,40f,100f, 60f),crossPaint)
 
         // ---------------------------------------
-        // 円のビットマップを生成
+        // 円のビットマップを生成(プログラム)
         // ---------------------------------------
-        val bmpCircle = Bitmap.createBitmap(100,100, Bitmap.Config.ARGB_8888)
-        val cvsCircle = Canvas(bmpCircle)
+        val bmpCircle1 = Bitmap.createBitmap(100,100, Bitmap.Config.ARGB_8888)
+        val cvsCircle = Canvas(bmpCircle1)
         // 透明色でクリア
         cvsCircle.drawColor(Color.TRANSPARENT,PorterDuff.Mode.CLEAR)
-        cvsCircle.drawCircle(50f,50f,25f,circlePaint)
+        cvsCircle.drawCircle(50f,50f,40f,circlePaint)
+
+        // ---------------------------------------
+        // 十字架のビットマップを生成(リソース)
+        // ---------------------------------------
+        val bmpCross2 = BitmapFactory.decodeResource(resources,R.drawable.cross)
+
+        // ---------------------------------------
+        // 円のビットマップを生成(リソース)
+        // ---------------------------------------
+        val bmpCircle2 = BitmapFactory.decodeResource(resources,R.drawable.circle)
 
         // ---------------------------------------
 
         // バックグラウンドを描画
-        canvas.drawColor(Color.WHITE)
+        canvas.drawColor(0xffcccccc.toInt())
 
         // ---------------------------------------
         // １行目
         // ---------------------------------------
-        canvas.drawBitmap(bmpCross,0f,0f,dummyPaint)
-        canvas.drawBitmap(bmpCircle,100f,0f,dummyPaint)
+        canvas.drawBitmap(bmpCross1,0f,0f,dummyPaint)
+        canvas.drawBitmap(bmpCircle1,100f,0f,dummyPaint)
 
         // ---------------------------------------
-        // ２行目
+        // ２行目(SRC)
         // ---------------------------------------
-        val sc = canvas.saveLayer(100f,100f,200f,200f,dummyPaint)
+        canvas.saveLayer(0f,100f,sw,200f,dummyPaint)
         canvas.translate(100f,100f)
 
         // DST
-        canvas.drawBitmap(bmpCross,0f,0f,dummyPaint)
+        canvas.drawBitmap(bmpCross1,0f,0f,dummyPaint)
         dummyPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC)
 
         // SRC
-        canvas.drawBitmap(bmpCircle,0f,0f,dummyPaint)
+        canvas.drawBitmap(bmpCircle1,0f,0f,dummyPaint)
         dummyPaint.xfermode = null
 
-        canvas.restoreToCount(sc)
+        canvas.translate(200f,0f)
+        canvas.drawText("SRC",0f,textOffset,textPaint)
+
+        canvas.restore()
 
         // ---------------------------------------
-        // ２行目
+        // ３行目(DST)
         // ---------------------------------------
-        val sc2 = canvas.saveLayer(100f,100f,200f,200f,dummyPaint)
-        canvas.translate(100f,100f)
+        canvas.saveLayer(0f,200f,sw,300f,dummyPaint)
+        canvas.translate(100f,200f)
 
         // DST
-        canvas.drawBitmap(bmpCross,0f,0f,dummyPaint)
-        dummyPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC)
+        canvas.drawBitmap(bmpCross1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.DST)
 
         // SRC
-        canvas.drawBitmap(bmpCircle,0f,0f,dummyPaint)
+        canvas.drawBitmap(bmpCircle1,0f,0f,dummyPaint)
         dummyPaint.xfermode = null
 
-        canvas.restoreToCount(sc2)
+        canvas.translate(200f,0f)
+        canvas.drawText("DST",0f,textOffset,textPaint)
+
+        canvas.restore()
+
+        // ---------------------------------------
+        // ４行目(SRC_OVER)
+        // ---------------------------------------
+        canvas.saveLayer(0f,300f,sw,400f,dummyPaint)
+        canvas.translate(100f,300f)
+
+        // DST
+        canvas.drawBitmap(bmpCross1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_OVER)
+
+        // SRC
+        canvas.drawBitmap(bmpCircle1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = null
+
+        canvas.translate(200f,0f)
+        canvas.drawText("SRC_OVER",0f,textOffset,textPaint)
+
+        canvas.restore()
+
+        // ---------------------------------------
+        // ５行目(DST_OVER)
+        // ---------------------------------------
+        canvas.saveLayer(0f,400f,sw,500f,dummyPaint)
+        canvas.translate(100f,400f)
+
+        // DST
+        canvas.drawBitmap(bmpCross1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_OVER)
+
+        // SRC
+        canvas.drawBitmap(bmpCircle1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = null
+
+        canvas.translate(200f,0f)
+        canvas.drawText("DST_OVER",0f,textOffset,textPaint)
+
+        canvas.restore()
+
+
+
+
+
+
+
+
+
+
+
+        /*
+        // ---------------------------------------
+        // DST_OVER
+        // ---------------------------------------
+        canvas.translate(100f,0f)
+        // DST
+        canvas.drawBitmap(bmpCross1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_OVER)
+
+        // SRC
+        canvas.drawBitmap(bmpCircle1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = null
+
+        // ---------------------------------------
+        // SRC_IN
+        // ---------------------------------------
+        canvas.translate(100f,0f)
+        // DST
+        canvas.drawBitmap(bmpCross1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
+
+        // SRC
+        canvas.drawBitmap(bmpCircle1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = null
+
+        canvas.restore()
+        */
+
 
         surfaceViewCanvas.holder.unlockCanvasAndPost(canvas)
     }
