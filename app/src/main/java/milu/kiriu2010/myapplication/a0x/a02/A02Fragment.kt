@@ -14,6 +14,7 @@ import milu.kiriu2010.myapplication.R
 // ----------------------------------------
 // https://tech.recruit-mp.co.jp/mobile/remember_canvas2/
 // https://vividcode.hatenablog.com/entry/android-app/sdk/canvas-savelayer-and-xfermode
+// http://axolotlhp.web.fc2.com/kobanasi/kobanasi07.html
 // ----------------------------------------
 class A02Fragment : Fragment()
     , SurfaceHolder.Callback {
@@ -226,11 +227,214 @@ class A02Fragment : Fragment()
 
         canvas.restore()
 
+        // ---------------------------------------
+        // ６行目(SRC_IN)
+        // ---------------------------------------
+        canvas.saveLayer(0f,500f,sw,600f,dummyPaint)
+        canvas.translate(100f,500f)
 
+        // DST
+        canvas.drawBitmap(bmpCross1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
 
+        // SRC
+        canvas.drawBitmap(bmpCircle1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = null
 
+        canvas.translate(200f,0f)
+        canvas.drawText("SRC_IN",0f,textOffset,textPaint)
 
+        canvas.restore()
 
+        // ---------------------------------------
+        // ７行目(DST_IN)
+        // ---------------------------------------
+        canvas.saveLayer(0f,600f,sw,700f,dummyPaint)
+        canvas.translate(100f,600f)
+
+        // DST
+        canvas.drawBitmap(bmpCross1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_IN)
+
+        // SRC
+        canvas.drawBitmap(bmpCircle1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = null
+
+        canvas.translate(200f,0f)
+        canvas.drawText("DST_IN",0f,textOffset,textPaint)
+
+        canvas.restore()
+
+        // ---------------------------------------
+        // ８行目(SRC_OUT)
+        // ---------------------------------------
+        canvas.saveLayer(0f,700f,sw,800f,dummyPaint)
+        canvas.translate(100f,700f)
+
+        // DST
+        canvas.drawBitmap(bmpCross1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_OUT)
+
+        // SRC
+        canvas.drawBitmap(bmpCircle1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = null
+
+        canvas.translate(200f,0f)
+        canvas.drawText("SRC_OUT",0f,textOffset,textPaint)
+
+        canvas.restore()
+
+        // ---------------------------------------
+        // ９行目(DST_OUT)
+        // ---------------------------------------
+        canvas.saveLayer(0f,800f,sw,900f,dummyPaint)
+        canvas.translate(100f,800f)
+
+        // DST
+        canvas.drawBitmap(bmpCross1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_OUT)
+
+        // SRC
+        canvas.drawBitmap(bmpCircle1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = null
+
+        canvas.translate(200f,0f)
+        canvas.drawText("DST_OUT",0f,textOffset,textPaint)
+
+        canvas.restore()
+
+        // ---------------------------------------
+        // １０行目(SRC_ATOP)
+        // ---------------------------------------
+        canvas.saveLayer(0f,900f,sw,1000f,dummyPaint)
+        canvas.translate(100f,900f)
+
+        // DST
+        canvas.drawBitmap(bmpCross1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP)
+
+        // SRC
+        canvas.drawBitmap(bmpCircle1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = null
+
+        canvas.translate(200f,0f)
+        canvas.drawText("SRC_ATOP",0f,textOffset,textPaint)
+
+        canvas.restore()
+
+        // ---------------------------------------
+        // １１行目(DST_ATOP)
+        // ---------------------------------------
+        canvas.saveLayer(0f,1000f,sw,1100f,dummyPaint)
+        canvas.translate(100f,1000f)
+
+        // DST
+        canvas.drawBitmap(bmpCross1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_ATOP)
+
+        // SRC
+        canvas.drawBitmap(bmpCircle1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = null
+
+        canvas.translate(200f,0f)
+        canvas.drawText("DST_ATOP",0f,textOffset,textPaint)
+
+        canvas.restore()
+
+        // ---------------------------------------
+        // １１行目(XOR)
+        // ---------------------------------------
+        canvas.saveLayer(0f,1100f,sw,1200f,dummyPaint)
+        canvas.translate(100f,1100f)
+
+        // DST
+        canvas.drawBitmap(bmpCross1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.XOR)
+
+        // SRC
+        canvas.drawBitmap(bmpCircle1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = null
+
+        canvas.translate(200f,0f)
+        canvas.drawText("XOR",0f,textOffset,textPaint)
+
+        canvas.restore()
+
+        // ---------------------------------------
+        // １２行目(DARKEN)
+        // ---------------------------------------
+        canvas.saveLayer(0f,1200f,sw,1300f,dummyPaint)
+        canvas.translate(100f,1200f)
+
+        // DST
+        canvas.drawBitmap(bmpCross1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.DARKEN)
+
+        // SRC
+        canvas.drawBitmap(bmpCircle1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = null
+
+        canvas.translate(200f,0f)
+        canvas.drawText("DARKEN",0f,textOffset,textPaint)
+
+        canvas.restore()
+
+        // ---------------------------------------
+        // １３行目(LIGHTEN)
+        // ---------------------------------------
+        canvas.saveLayer(0f,1300f,sw,1400f,dummyPaint)
+        canvas.translate(100f,1300f)
+
+        // DST
+        canvas.drawBitmap(bmpCross1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.LIGHTEN)
+
+        // SRC
+        canvas.drawBitmap(bmpCircle1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = null
+
+        canvas.translate(200f,0f)
+        canvas.drawText("LIGHTEN",0f,textOffset,textPaint)
+
+        canvas.restore()
+
+        // ---------------------------------------
+        // １４行目(MULTIPLY)
+        // ---------------------------------------
+        canvas.saveLayer(0f,1400f,sw,1500f,dummyPaint)
+        canvas.translate(100f,1400f)
+
+        // DST
+        canvas.drawBitmap(bmpCross1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.MULTIPLY)
+
+        // SRC
+        canvas.drawBitmap(bmpCircle1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = null
+
+        canvas.translate(200f,0f)
+        canvas.drawText("MULTIPLY",0f,textOffset,textPaint)
+
+        canvas.restore()
+
+        // ---------------------------------------
+        // １５行目(SCREEN)
+        // ---------------------------------------
+        canvas.saveLayer(0f,1500f,sw,1600f,dummyPaint)
+        canvas.translate(100f,1500f)
+
+        // DST
+        canvas.drawBitmap(bmpCross1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SCREEN)
+
+        // SRC
+        canvas.drawBitmap(bmpCircle1,0f,0f,dummyPaint)
+        dummyPaint.xfermode = null
+
+        canvas.translate(200f,0f)
+        canvas.drawText("SCREEN",0f,textOffset,textPaint)
+
+        canvas.restore()
 
 
 
