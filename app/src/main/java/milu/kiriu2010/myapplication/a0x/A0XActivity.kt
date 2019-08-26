@@ -7,6 +7,7 @@ import android.view.MenuItem
 import milu.kiriu2010.myapplication.R
 import milu.kiriu2010.myapplication.a0x.a01.A01Fragment
 import milu.kiriu2010.myapplication.a0x.a02.A02Fragment
+import milu.kiriu2010.myapplication.a0x.a03.A03Fragment
 
 class A0XActivity : AppCompatActivity() {
 
@@ -17,7 +18,7 @@ class A0XActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, A02Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, A03Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -42,12 +43,12 @@ class A0XActivity : AppCompatActivity() {
                 finish()
                 true
             }
-            // PathEffect
-            R.id.a01 -> {
+            // PorterDuff
+            R.id.a03 -> {
                 supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("a01") == null) {
+                if (supportFragmentManager.findFragmentByTag("a03") == null) {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, A01Fragment.newInstance(), "a01")
+                        .replace(R.id.frameLayout, A03Fragment.newInstance(), "a03")
                         .commit()
                 }
                 true
@@ -58,6 +59,16 @@ class A0XActivity : AppCompatActivity() {
                 if (supportFragmentManager.findFragmentByTag("a02") == null) {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, A02Fragment.newInstance(), "a02")
+                        .commit()
+                }
+                true
+            }
+            // PathEffect
+            R.id.a01 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("a01") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, A01Fragment.newInstance(), "a01")
                         .commit()
                 }
                 true
