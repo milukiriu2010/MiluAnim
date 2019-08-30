@@ -8,6 +8,7 @@ import milu.kiriu2010.myapplication.R
 import milu.kiriu2010.myapplication.a0x.a01.A01Fragment
 import milu.kiriu2010.myapplication.a0x.a02.A02Fragment
 import milu.kiriu2010.myapplication.a0x.a03.A03Fragment
+import milu.kiriu2010.myapplication.a0x.a04.A04Fragment
 
 class A0XActivity : AppCompatActivity() {
 
@@ -18,7 +19,7 @@ class A0XActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, A03Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, A04Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -41,6 +42,16 @@ class A0XActivity : AppCompatActivity() {
             // 前画面に戻る
             android.R.id.home -> {
                 finish()
+                true
+            }
+            // saveLayer
+            R.id.a04 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("a04") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, A04Fragment.newInstance(), "a04")
+                        .commit()
+                }
                 true
             }
             // PorterDuff
