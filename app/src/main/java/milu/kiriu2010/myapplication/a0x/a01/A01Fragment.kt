@@ -5,7 +5,7 @@ import android.graphics.*
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.*
 
 import milu.kiriu2010.myapplication.R

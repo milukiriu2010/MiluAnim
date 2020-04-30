@@ -3,7 +3,7 @@ package milu.kiriu2010.myapplication.a0x.a02
 import android.graphics.*
 import android.os.Bundle
 import android.os.Handler
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.text.TextPaint
 import android.view.*
 
@@ -133,12 +133,12 @@ class A02Fragment : Fragment()
         // ---------------------------------------
         // 十字架のビットマップを生成(リソース)
         // ---------------------------------------
-        val bmpCross2 = BitmapFactory.decodeResource(resources,R.drawable.cross)
+        //val bmpCross2 = BitmapFactory.decodeResource(resources,R.drawable.cross)
 
         // ---------------------------------------
         // 円のビットマップを生成(リソース)
         // ---------------------------------------
-        val bmpCircle2 = BitmapFactory.decodeResource(resources,R.drawable.circle)
+        //val bmpCircle2 = BitmapFactory.decodeResource(resources,R.drawable.circle)
 
         // ---------------------------------------
 

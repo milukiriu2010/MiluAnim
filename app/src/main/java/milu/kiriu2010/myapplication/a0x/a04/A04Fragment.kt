@@ -3,7 +3,7 @@ package milu.kiriu2010.myapplication.a0x.a04
 import android.graphics.*
 import android.os.Bundle
 import android.os.Handler
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.text.TextPaint
 import android.view.*
 import milu.kiriu2010.gui.basic.MyPointF
