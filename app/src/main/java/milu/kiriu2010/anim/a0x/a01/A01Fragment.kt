@@ -1,14 +1,12 @@
-package milu.kiriu2010.myapplication.a0x.a01
+package milu.kiriu2010.anim.a0x.a01
 
-import android.content.Context
 import android.graphics.*
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.*
 
-import milu.kiriu2010.myapplication.R
+import milu.kiriu2010.anim.R
 
 // ----------------------------------------
 // PathEffect

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:dist="http://schemas.android.com/apk/distribution"
-          package="milu.kiriu2010.myapplication">
+          package="milu.kiriu2010.anim">
 
     <dist:module dist:instant="true"/>
 
@@ -16,9 +16,9 @@
         <!-- android:icon="@mipmap/ic_launcher" -->
         <!-- android:roundIcon="@mipmap/ic_launcher_round" -->
 
-        <activity android:name="milu.kiriu2010.myapplication.a0x.A0XActivity">
+        <activity android:name="milu.kiriu2010.anim.a0x.A0XActivity">
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name="milu.kiriu2010.anim.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

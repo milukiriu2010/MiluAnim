@@ -1,14 +1,13 @@
-package milu.kiriu2010.myapplication.a0x.a04
+package milu.kiriu2010.anim.a0x.a04
 
 import android.graphics.*
 import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
-import android.text.TextPaint
 import android.view.*
 import milu.kiriu2010.gui.basic.MyPointF
 
-import milu.kiriu2010.myapplication.R
+import milu.kiriu2010.anim.R
 
 // ----------------------------------------
 // saveLayer

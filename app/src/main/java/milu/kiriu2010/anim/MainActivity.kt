@@ -1,10 +1,10 @@
-package milu.kiriu2010.myapplication
+package milu.kiriu2010.anim
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
-import milu.kiriu2010.myapplication.a0x.A0XActivity
+import milu.kiriu2010.anim.a0x.A0XActivity
 
 class MainActivity : AppCompatActivity() {
 

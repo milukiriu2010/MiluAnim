@@ -1,14 +1,14 @@
-package milu.kiriu2010.myapplication.a0x
+package milu.kiriu2010.anim.a0x
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import milu.kiriu2010.myapplication.R
-import milu.kiriu2010.myapplication.a0x.a01.A01Fragment
-import milu.kiriu2010.myapplication.a0x.a02.A02Fragment
-import milu.kiriu2010.myapplication.a0x.a03.A03Fragment
-import milu.kiriu2010.myapplication.a0x.a04.A04Fragment
+import milu.kiriu2010.anim.R
+import milu.kiriu2010.anim.a0x.a01.A01Fragment
+import milu.kiriu2010.anim.a0x.a02.A02Fragment
+import milu.kiriu2010.anim.a0x.a03.A03Fragment
+import milu.kiriu2010.anim.a0x.a04.A04Fragment
 
 class A0XActivity : AppCompatActivity() {
 

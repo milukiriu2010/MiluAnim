@@ -1,4 +1,4 @@
-package milu.kiriu2010.myapplication
+package milu.kiriu2010.anim
 
 import org.junit.Test
 

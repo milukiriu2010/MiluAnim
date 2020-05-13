@@ -1,4 +1,4 @@
-package milu.kiriu2010.myapplication
+package milu.kiriu2010.anim
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
